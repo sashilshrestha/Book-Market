@@ -75,7 +75,8 @@ genre.addEventListener('change', () => {
 });
 
 //Cart Array
-let cart_arr = [];
+let cart_arr = JSON.parse(localStorage.getItem('Cart')) || [];
+updateCart();
 
 // Add to Cart
 window.addToCart = (id) => {
@@ -101,6 +102,9 @@ window.addToCart = (id) => {
 function updateCart() {
     renderCartItems();
     renderSubtotal();
+
+    // Save cart to local storage
+    localStorage.setItem('Cart', JSON.stringify(cart_arr));
 }
 
 // Calculate and render subtotal
@@ -147,14 +151,20 @@ function renderCartItems() {
             item.id
         })">+</button>
         <p>${nepaliPrice * item.numberOfUnits}</p>
-        <button class="bg-red-600 text-white rounded-full p-2">X</button>
+        <button class="bg-red-600 text-white rounded-full p-2" onclick="removeItemFromCart(${
+            item.id
+        })">X</button>
         </div>            
         `;
     });
 }
 
 // Remove Item from cart
+window.removeItemFromCart = (id) => {
+    cart_arr = cart_arr.filter((item) => item.id !== id);
 
+    updateCart();
+};
 
 // Change number of units for an item
 window.changeNumber = (action, id) => {
