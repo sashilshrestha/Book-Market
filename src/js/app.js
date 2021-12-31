@@ -65,7 +65,6 @@ function selectGrid(results, genreInput) {
     });
     searchResultDiv.innerHTML = gHTML;
 }
-
 fetchAPI();
 
 // Calling data on change
@@ -162,7 +161,6 @@ function renderCartItems() {
 // Remove Item from cart
 window.removeItemFromCart = (id) => {
     cart_arr = cart_arr.filter((item) => item.id !== id);
-
     updateCart();
 };
 
