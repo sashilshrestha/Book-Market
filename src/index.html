@@ -2,7 +2,6 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="favicon.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Gurzu Book Mart</title>
     </head>
@@ -12,9 +11,17 @@
 
         <!-- Content Section-->
         <div id="home-page">
-            <h1 class="text-3xl font-bold underline bg-yellow-500">
-                Hello world! Sashil
-            </h1>
+            <div class="container mx-auto">
+                <select id="framework">
+                    <option value="">All</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Action">Action</option>
+                    <option value="Crime">Crime</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Horror">Horror</option>
+                </select>
+                <div class="search-result"></div>
+            </div>
         </div>
     </body>
     <script type="module" src="./js/main.js"></script>
