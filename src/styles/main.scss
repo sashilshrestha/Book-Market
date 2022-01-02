@@ -1,4 +1,9 @@
+@import './global/typography.scss';
+@import './global/variables.scss';
+@import './global/formula.scss';
+@import './global/media.scss';
 @import './global/header.scss';
+@import './includes/home.scss';
 
 * {
     margin: 0;

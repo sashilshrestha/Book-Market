@@ -3,7 +3,7 @@ nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        min-height: 110px;
+        min-height: #{toRem(110)};
 
         .logo {
             font-size: 2rem;
@@ -44,11 +44,13 @@ nav {
         .blur-bg {
             display: none;
             transition: all 0.3s ease;
+            overflow-y: hidden;
             &.open {
                 display: block;
                 position: absolute;
                 top: 0;
                 right: 0;
+                bottom: 0;
                 height: 100vh;
                 width: 100%;
                 z-index: 1;
@@ -66,10 +68,12 @@ nav {
         nav {
             .container {
                 .nav-links {
+                    overflow-y: hidden;
                     position: absolute;
                     height: 100vh;
                     top: 0;
                     right: 0;
+                    bottom: 0;
                     background-color: #2e8bca;
                     display: flex;
                     flex-direction: column;
