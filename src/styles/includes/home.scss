@@ -1,5 +1,9 @@
 #landing {
     .container {
+        @include set(760) {
+            flex-direction: column;
+        }
+
         .left-landing {
             width: 60%;
             h1 {
@@ -10,18 +14,38 @@
                 span {
                     color: $primary;
                 }
+
+                @include set(768) {
+                    @include font-size(70);
+                }
+                @include set(500) {
+                    @include font-size(55);
+                }
             }
 
             p {
                 @include font-size(26);
                 color: $grey;
                 @include padding(0, 10, 0, 0);
+
+                @include set(500) {
+                    @include font-size(20);
+                }
+            }
+
+            @include set(760) {
+                width: 100%;
+                margin-top: 15rem;
             }
         }
         .right-landing {
             img {
                 height: #{toRem(850)};
                 object-fit: contain;
+
+                @include set(600) {
+                    height: auto;
+                }
             }
         }
     }
@@ -49,6 +73,39 @@
 
                 position: relative;
                 transition: all 0.3s ease;
+
+                @include set(1600) {
+                    @include width(270);
+                    @include height(330);
+                }
+                @include set(1024) {
+                    @include width(240);
+                    @include height(280);
+                }
+                @include set(991) {
+                    @include width(255);
+                    @include height(280);
+                }
+                @include set(768) {
+                    @include width(200);
+                    @include height(280);
+                }
+
+                @include set(767) {
+                    @include width(290);
+                    @include height(280);
+
+                    &:nth-last-child(n + 3) {
+                        display: none;
+                    }
+                }
+
+                @include set(600) {
+                    &:nth-last-child(n + 2) {
+                        display: none;
+                    }
+                    width: 100%;
+                }
 
                 img {
                     width: inherit;
@@ -134,6 +191,44 @@
                 box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
                 @include margin(0, 0, 36, 0);
 
+                @include set(1600) {
+                    @include width(700);
+                }
+                @include set(1280) {
+                    @include width(650);
+                }
+                @include set(1152) {
+                    @include width(700);
+                }
+                @include set(1024) {
+                    @include width(620);
+                }
+                @include set(991) {
+                    @include width(670);
+                }
+                @include set(768) {
+                    @include width(530);
+                    @include height(500);
+
+                    .right-book {
+                        .title {
+                            font-size: 2rem !important;
+                        }
+                    }
+                }
+                @include set(600) {
+                    flex-direction: column;
+                    height: auto;
+
+                    .left-book {
+                        width: 100% !important;
+                        height: 20rem !important;
+                    }
+                    .right-book {
+                        width: 100% !important;
+                    }
+                }
+
                 .left-book {
                     width: 50%;
                     height: inherit;
@@ -199,6 +294,10 @@
                         &:hover {
                             background-color: rgba($primary, $alpha: 0.8);
                             transform: translateY(-2px);
+                        }
+
+                        @include set(768) {
+                            @include font-size(24);
                         }
                     }
                 }

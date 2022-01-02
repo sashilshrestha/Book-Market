@@ -51,3 +51,19 @@
         max-width: 90% !important;
     }
 }
+@media screen and (max-width: 420px) {
+    :root {
+        font-size: 12px;
+    }
+    .container {
+        max-width: 90% !important;
+    }
+}
+@media screen and (max-width: 320px) {
+    :root {
+        font-size: 10px;
+    }
+    .container {
+        max-width: 90% !important;
+    }
+}

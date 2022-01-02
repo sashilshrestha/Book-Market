@@ -1,4 +1,6 @@
 nav {
+    z-index: 1;
+    
     .container {
         display: flex;
         justify-content: space-between;
@@ -29,11 +31,29 @@ nav {
                         color: white;
                         border-radius: 6px;
                     }
+
+                    @include set(768) {
+                        font-size: 4rem;
+                    }
+                    @include set(450) {
+                        font-size: 2rem;
+                    }
                 }
 
                 .cart-icon {
                     cursor: pointer;
                     height: 1.5rem;
+                }
+
+                @include set(450) {
+                    font-size: 2rem;
+                    margin: 2.5rem 0 !important;
+                }
+            }
+
+            &.nav-active {
+                @include set(500) {
+                    width: 100%;
                 }
             }
         }
@@ -44,7 +64,7 @@ nav {
             div {
                 width: 25px;
                 height: 3px;
-                background-color: black;
+                background-color: $primary;
                 margin: 5px;
                 transition: all 0.3s ease;
             }
@@ -97,7 +117,7 @@ nav {
                     @include padding(20, 20, 20, 20);
                     @include margin(40, 60, 40, 60);
                     border-radius: #{toRem(10)};
-                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+                    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 
                     .left-cart {
                         width: 50%;
@@ -167,6 +187,11 @@ nav {
             }
         }
     }
+
+    @include set(768) {
+        background-color: $white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -196,7 +221,7 @@ nav {
                     z-index: 2;
                     li {
                         margin: 50px 0px 50px 0px;
-                        opacity: 0;
+                        opacity: 1;
                         a {
                             color: #fff;
                         }
@@ -214,6 +239,7 @@ nav {
                     &.toggle {
                         .line1 {
                             transform: rotate(-45deg) translate(-5px, 6px);
+                            background-color: $white;
                         }
 
                         .line2 {
@@ -221,6 +247,7 @@ nav {
                         }
                         .line3 {
                             transform: rotate(45deg) translate(-5px, -6px);
+                            background-color: $white;
                         }
                     }
                 }
