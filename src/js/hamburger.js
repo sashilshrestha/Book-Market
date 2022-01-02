@@ -4,6 +4,9 @@ const navSlide = () => {
     const navLinks = document.querySelectorAll('.nav-links li');
     const bgBlur = document.querySelector('.blur-bg');
     const bgBlurTouch = document.querySelector('.blur-bg');
+    const cartIcon = document.querySelector('.cart-icon');
+    const cardContainer = document.querySelector('.cart-container');
+    const cardBlur = document.querySelector('.cart-blur-bg');
 
     burger.addEventListener('click', () => {
         nav.classList.toggle('nav-active');
@@ -34,6 +37,16 @@ const navSlide = () => {
 
         // Blur Background
         bgBlur.classList.remove('open');
+    });
+
+    cartIcon.addEventListener('click', () => {
+        cardContainer.classList.toggle('cart-open');
+        cardBlur.classList.add('open');
+    });
+
+    cardBlur.addEventListener('click', () => {
+        cardContainer.classList.remove('cart-open');
+        cardBlur.classList.remove('open');
     });
 };
 

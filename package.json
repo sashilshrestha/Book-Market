@@ -2,7 +2,7 @@
     "name": "book-mark",
     "version": "0.0.0",
     "scripts": {
-        "dev": "vite",
+        "dev": "vite --host",
         "build": "vite build",
         "preview": "vite preview",
         "build-css": "npx tailwindcss -i ./src/tailwind.css -o ./src/styles/global/tailwind.css --watch"

@@ -6,7 +6,7 @@
                 @include font-size(81);
                 font-weight: 800;
                 line-height: 105%;
-
+                color: $grey;
                 span {
                     color: $primary;
                 }
@@ -19,6 +19,190 @@
             }
         }
         .right-landing {
+            img {
+                height: #{toRem(850)};
+                object-fit: contain;
+            }
+        }
+    }
+}
+
+#genre {
+    .container {
+        .section-heading {
+            h3 {
+                @include font-size(50);
+                font-weight: 800;
+                color: $grey;
+                @include margin(20, 0, 20, 0);
+            }
+        }
+
+        .genre-container {
+            @include margin(0, 0, 90, 0);
+            display: flex;
+            justify-content: space-between;
+
+            .genre-card {
+                @include width(282);
+                @include height(354);
+
+                position: relative;
+                transition: all 0.3s ease;
+
+                img {
+                    width: inherit;
+                    height: inherit;
+                    object-fit: cover;
+                    border-radius: #{toRem(20)};
+                    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+                }
+
+                .img-overlay {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background: rgb(46, 139, 202);
+                    background: linear-gradient(
+                        180deg,
+                        rgba(46, 139, 202, 0) 0%,
+                        rgba(46, 139, 202, 1) 100%
+                    );
+                    top: 0;
+                    left: 0;
+                    border-radius: #{toRem(20)};
+                }
+
+                h3 {
+                    position: absolute;
+                    bottom: #{toRem(10)};
+                    left: #{toRem(20)};
+                    @include font-size(42);
+                    color: $white;
+                    font-weight: 800;
+                }
+
+                &:hover {
+                    transform: scale(1.03);
+                }
+            }
+        }
+    }
+}
+
+#books {
+    .container {
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            h3 {
+                @include font-size(50);
+                font-weight: 800;
+                color: $grey;
+                @include margin(20, 0, 20, 0);
+            }
+
+            .genre-switch {
+                #genre {
+                    @include font-size(24);
+                    background-color: $white;
+                    border: 1px solid black;
+                    border-radius: #{toRem(4)};
+                    @include padding(4, 0, 4, 2);
+                    border-color: $primary;
+                    color: $primary;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+
+        .book-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            .book-card {
+                @include width(751);
+                @include height(565);
+                border-radius: #{toRem(25)};
+                display: flex;
+                box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+                @include margin(0, 0, 36, 0);
+
+                .left-book {
+                    width: 50%;
+                    height: inherit;
+                    position: relative;
+
+                    img {
+                        width: 100%;
+                        height: inherit;
+                        object-fit: cover;
+                        border-radius: #{toRem(25)};
+                    }
+
+                    .img-overlay {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        background: rgb(46, 139, 202);
+                        background: linear-gradient(
+                            180deg,
+                            rgba(46, 139, 202, 0.4) 0%,
+                            rgba(46, 139, 202, 0.8) 100%
+                        );
+                        top: 0;
+                        left: 0;
+                        border-radius: #{toRem(20)};
+                    }
+                }
+                .right-book {
+                    width: 50%;
+
+                    @include padding(35, 30, 35, 30);
+                    .title {
+                        @include font-size(42);
+                        font-weight: 800;
+                        color: $grey;
+                        line-height: 110%;
+                        @include margin(0, 0, 10, 0);
+                    }
+                    .author {
+                        @include font-size(24);
+                        @include margin(0, 0, 15, 0);
+                    }
+                    .genre-cat {
+                        color: #b6b6b6;
+                        @include font-size(18);
+                    }
+                    .price {
+                        @include font-size(38);
+                        font-weight: 700;
+                        color: $primary;
+                        @include margin(28, 0, 18, 0);
+                    }
+                    .add-to-cart {
+                        @include font-size(30);
+                        font-weight: 700;
+                        background-color: $primary;
+                        color: $white;
+                        @include padding(10, 18, 10, 18);
+                        border-radius: #{toRem(10)};
+                        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+                        transition: all 0.2s ease;
+
+                        &:hover {
+                            background-color: rgba($primary, $alpha: 0.8);
+                            transform: translateY(-2px);
+                        }
+                    }
+                }
+            }
         }
     }
 }

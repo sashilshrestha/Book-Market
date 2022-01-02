@@ -7,24 +7,33 @@ nav {
 
         .logo {
             font-size: 2rem;
+            img {
+                height: #{toRem(80)};
+            }
         }
 
         .nav-links {
             display: flex;
             justify-content: space-around;
             li {
-                margin: 0 0 0 60px;
+                @include margin(0, 0, 0, 60);
                 a {
-                    font-size: 18px;
+                    @include font-size(18);
+
                     text-transform: uppercase;
                     font-weight: 600;
 
                     &.log-in-btn {
-                        padding: 10px 16px;
+                        @include padding(10, 16, 10, 16);
                         background-color: #2e8bca;
                         color: white;
                         border-radius: 6px;
                     }
+                }
+
+                .cart-icon {
+                    cursor: pointer;
+                    height: 1.5rem;
                 }
             }
         }
@@ -45,6 +54,7 @@ nav {
             display: none;
             transition: all 0.3s ease;
             overflow-y: hidden;
+
             &.open {
                 display: block;
                 position: absolute;
@@ -58,6 +68,104 @@ nav {
                 background-color: #2e8bca5c;
             }
         }
+
+        .cart-container {
+            position: fixed;
+            height: 100vh;
+            top: 0;
+            right: 0;
+            background-color: $white;
+            overflow-y: scroll;
+            z-index: 4;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+
+            .cart-heading {
+                @include font-size(70);
+                font-weight: 800;
+                color: $primary;
+                @include margin(40, 60, 40, 60);
+                text-transform: uppercase;
+            }
+
+            .cart-list-item {
+                .cart-card {
+                    @include width(460);
+                    @include height(180);
+                    display: flex;
+                    background-color: #eaf3fa;
+                    @include padding(20, 20, 20, 20);
+                    @include margin(40, 60, 40, 60);
+                    border-radius: #{toRem(10)};
+                    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+
+                    .left-cart {
+                        width: 50%;
+                        @include height(142);
+                        border-radius: #{toRem(10)};
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            border-radius: #{toRem(10)};
+                        }
+                    }
+                    .right-cart {
+                        @include padding(0, 0, 0, 20);
+                        h1 {
+                            @include font-size(24);
+                            font-weight: 800;
+                            color: $grey;
+                            line-height: 130%;
+                            margin-bottom: 0.5rem;
+                        }
+                        .price-item {
+                            display: flex;
+                            h3 {
+                                @include font-size(24);
+                                font-weight: 800;
+                                color: $primary;
+                            }
+                            .item-changer {
+                                display: flex;
+                            }
+                        }
+                        .remove-item {
+                            @include font-size(13);
+                            color: #656565;
+                        }
+                    }
+                }
+            }
+
+            &.cart-open {
+                transform: translateX(0);
+            }
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        .cart-blur-bg {
+            display: none;
+            transition: all 0.3s ease;
+            overflow-y: hidden;
+
+            &.open {
+                display: block;
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                height: 100vh;
+                width: 100%;
+                z-index: 3;
+                backdrop-filter: blur(2px);
+                background-color: #2e8bca5c;
+            }
+        }
     }
 }
 
@@ -66,10 +174,13 @@ nav {
         overflow-x: hidden;
 
         nav {
+            position: fixed;
+            width: 100%;
+
             .container {
                 .nav-links {
-                    overflow-y: hidden;
-                    position: absolute;
+                    // overflow-y: hidden;
+                    position: fixed;
                     height: 100vh;
                     top: 0;
                     right: 0;
