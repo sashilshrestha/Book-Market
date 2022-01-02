@@ -1,6 +1,6 @@
 nav {
     z-index: 1;
-    
+
     .container {
         display: flex;
         justify-content: space-between;
@@ -43,6 +43,10 @@ nav {
                 .cart-icon {
                     cursor: pointer;
                     height: 1.5rem;
+
+                    @include set(768) {
+                        display: none;
+                    }
                 }
 
                 @include set(450) {
@@ -61,7 +65,7 @@ nav {
         .ham-burger {
             display: none;
 
-            div {
+            .line {
                 width: 25px;
                 height: 3px;
                 background-color: $primary;
@@ -235,20 +239,27 @@ nav {
                 .ham-burger {
                     display: block;
                     z-index: 2;
+                    display: flex;
 
-                    &.toggle {
-                        .line1 {
-                            transform: rotate(-45deg) translate(-5px, 6px);
-                            background-color: $white;
-                        }
+                    .all-lines {
+                        &.toggle {
+                            .line1 {
+                                transform: rotate(-45deg) translate(-5px, 6px);
+                                background-color: $white;
+                            }
 
-                        .line2 {
-                            opacity: 0;
+                            .line2 {
+                                opacity: 0;
+                            }
+                            .line3 {
+                                transform: rotate(45deg) translate(-5px, -6px);
+                                background-color: $white;
+                            }
                         }
-                        .line3 {
-                            transform: rotate(45deg) translate(-5px, -6px);
-                            background-color: $white;
-                        }
+                    }
+
+                    .cart-icon {
+                        margin-right: 2rem;
                     }
                 }
             }

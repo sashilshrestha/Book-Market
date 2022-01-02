@@ -1,5 +1,5 @@
-const searchResultDiv = document.querySelector('.search-result');
-const cartitemsEl = document.querySelector('.cart-items');
+const searchResultDiv = document.querySelector('.book-container');
+const cartitemsEl = document.querySelector('.cart-list-item');
 const subtotalEl = document.querySelector('.subtotal');
 
 const baseURL = `https://book-set-task.herokuapp.com/api/list_books`;
@@ -8,7 +8,7 @@ const books = await response.json();
 
 // Fetching API
 async function fetchAPI() {
-    let genreInput = document.getElementById('framework').value;
+    let genreInput = document.getElementById('genreBtn').value;
     selectGrid(books, genreInput);
 }
 
@@ -19,6 +19,7 @@ function selectGrid(results, genreInput) {
     results.map((result, key) => {
         let dramaCat = result.genre;
         let state = dramaCat.includes(genreInput, 0);
+        console.log(state);
 
         if (state) {
             let dollarPrice = result.price;
@@ -27,39 +28,23 @@ function selectGrid(results, genreInput) {
             let nepaliPriceFloat = intdollar * 118;
             let nepaliPrice = parseInt(nepaliPriceFloat);
 
-            gHTML += `
-                
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                            <a class="block relative h-48 rounded overflow-hidden">
-                                <img alt="ecommerce" class=" object-cover object-center w-full h-full block" src="${result.image}/${result.id}"/>
-                            </a>
-                            <div class="mt-4">
-                                <h3
-                                    class="
-                                        text-gray-800 text-xs
-                                        tracking-widest
-                                        title-font
-                                        mb-1
-                                    "
-                                >
-                                ${result.genre}
-                                </h3>
-                                <h2
-                                    class="
-                                        text-gray-900
-                                        title-font
-                                        text-lg
-                                        font-medium
-                                    "
-                                >
-                                    ${result.name}
-                                </h2>
-                                <div class="flex justify-between">
-                                    <p class="mt-1">Rs. ${nepaliPrice}</p>
-                                    <button class="px-2 py-1 bg-blue-600 text-white rounded"" onclick="addToCart(${result.id})">Add to Cart</button>
-                                </div>
-                            </div>
-                        </div>
+            gHTML += `                
+            <div class="book-card">
+                <div class="left-book">
+                    <img
+                        src="${result.image} / ${result.genre}"
+                        alt=""
+                    />
+                    <div class="img-overlay"></div>
+                </div>
+                <div class="right-book">
+                    <h1 class="title">${result.name}</h1>
+                    <p class="author">by ${result.author}</p>
+                    <span class="genre-cat">${result.genre}</span>
+                    <h3 class="price">Rs. ${nepaliPrice}</h3>
+                    <button class="add-to-cart" onclick="addToCart(${result.id})">Add to Cart</button>
+                </div>
+            </div>     
                 `;
         }
     });
@@ -68,7 +53,7 @@ function selectGrid(results, genreInput) {
 fetchAPI();
 
 // Calling data on change
-const genre = document.getElementById('framework');
+const genre = document.getElementById('genreBtn');
 genre.addEventListener('change', () => {
     fetchAPI();
 });
@@ -134,26 +119,29 @@ function renderCartItems() {
         let nepaliPrice = parseInt(nepaliPriceFloat);
 
         cartitemsEl.innerHTML += `
-        <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-        <a class="block relative h-48 rounded overflow-hidden">
-            <img alt="ecommerce" class=" object-cover object-center w-full h-full block" src="${
-                item.image
-            }/${item.id}"/>
-        </a>
-        <button class="px-2 py-1 bg-blue-600 text-white rounded"" onclick="changeNumber('minus',${
-            item.id
-        })">-</button>
-        <button class="px-2 py-1 bg-blue-600 text-white rounded">${
-            item.numberOfUnits
-        }</button>
-        <button class="px-2 py-1 bg-blue-600 text-white rounded"" onclick="changeNumber('plus',${
-            item.id
-        })">+</button>
-        <p>${nepaliPrice * item.numberOfUnits}</p>
-        <button class="bg-red-600 text-white rounded-full p-2" onclick="removeItemFromCart(${
-            item.id
-        })">X</button>
-        </div>            
+        <div class="cart-card">
+            <div class="left-cart">
+                <img
+                    src="${item.image}/${item.id}"
+                    alt=""
+                />
+            </div>
+            <div class="right-cart">
+                <h1>
+                    The Psychologocal Graphics Design
+                    Pricing
+                </h1>
+                <div class="price-item">
+                    <h3>Rs. ${nepaliPrice * item.numberOfUnits}</h3>
+                    <div class="item-changer">
+                        <button onclick="changeNumber('minus',${item.id})">-</button>
+                        <p>${item.numberOfUnits}</p>
+                        <button onclick="changeNumber('plus',${item.id})">+</button>
+                    </div>
+                </div>
+                <div class="remove-item" onclick="removeItemFromCart(${item.id})">Remove Item</div>
+            </div>
+        </div>                        
         `;
     });
 }
