@@ -33,6 +33,10 @@ section {
     font-weight: 700;
     color: white;
     @include font-size(12);
+
+    @include set(768) {
+        display: none;
+    }
 }
 
 #alert {
@@ -76,4 +80,10 @@ section {
     100% {
         transform: translateX(-10px);
     }
+}
+
+.subtotal {
+    font-weight: 700;
+    text-align: center;
+    font-size: 1.8rem;
 }

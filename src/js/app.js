@@ -21,7 +21,6 @@ function selectGrid(results, genreInput) {
     results.map((result, key) => {
         let dramaCat = result.genre;
         let state = dramaCat.includes(genreInput, 0);
-        console.log(state);
 
         if (state) {
             let dollarPrice = result.price;
@@ -143,8 +142,7 @@ function renderCartItems() {
             </div>
             <div class="right-cart">
                 <h1>
-                    The Psychologocal Graphics Design
-                    Pricing
+                    ${item.name}
                 </h1>
                 <div class="price-item">
                     <h3>Rs. ${nepaliPrice * item.numberOfUnits}</h3>

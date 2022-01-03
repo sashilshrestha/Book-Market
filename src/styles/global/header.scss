@@ -111,6 +111,10 @@ nav {
                 color: $primary;
                 @include margin(40, 60, 40, 60);
                 text-transform: uppercase;
+
+                @include set(555) {
+                    @include margin(0, 25, 0, 25);
+                }
             }
 
             .cart-list-item {
@@ -125,7 +129,7 @@ nav {
                     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 
                     .left-cart {
-                        width: 50%;
+                        width: 30%;
                         @include height(142);
                         border-radius: #{toRem(10)};
 
@@ -184,6 +188,11 @@ nav {
                             cursor: pointer;
                         }
                     }
+
+                    @include set(555) {
+                        @include margin(40, 25, 40, 25);
+                        width: auto;
+                    }
                 }
             }
 
@@ -208,6 +217,10 @@ nav {
                         color: $primary;
                     }
                 }
+
+                @include set(555) {
+                    @include margin(0, 16, 0, 16);
+                }
             }
 
             &.cart-open {
@@ -216,6 +229,11 @@ nav {
 
             &::-webkit-scrollbar {
                 display: none;
+            }
+
+            @include set(555) {
+                width: 100%;
+                padding-bottom: 2rem;
             }
         }
 
