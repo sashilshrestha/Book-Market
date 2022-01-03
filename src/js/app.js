@@ -2,6 +2,7 @@ const searchResultDiv = document.querySelector('.book-container');
 const cartitemsEl = document.querySelector('.cart-list-item');
 const subtotalEl = document.querySelector('.subtotal');
 const cartNumberEl = document.querySelector('.cart-number-counter');
+let alertEl = document.querySelector('#alert');
 
 const baseURL = `https://book-set-task.herokuapp.com/api/list_books`;
 const response = await fetch(baseURL);
@@ -63,11 +64,19 @@ genre.addEventListener('change', () => {
 let cart_arr = JSON.parse(localStorage.getItem('Cart')) || [];
 updateCart();
 
+function addClass(className, idx) {
+    alertEl.classList.add(className);
+    setTimeout(function () {
+        alertEl.classList.remove(className);
+    }, 2000);
+}
+
 // Add to Cart
 window.addToCart = (id) => {
     // check if book already exist in cart
     if (cart_arr.some((item) => item.id === id)) {
         changeNumber('plus', id);
+        addClass('show');
     } else {
         let totalCartItems = cart_arr.length + 1;
         if (totalCartItems < 6) {
@@ -77,6 +86,7 @@ window.addToCart = (id) => {
                 numberOfUnits: 1,
             });
             updateCart();
+            addClass('show');
         } else {
             alert('Cannot add more than 5 books');
         }
@@ -107,7 +117,10 @@ function renderSubtotal() {
         totalItems += item.numberOfUnits;
     });
     subtotalEl.innerHTML = `Subtotal ${totalItems} items : Rs. ${totalPrice}`;
-    cartNumberEl.innerHTML = totalItems;
+
+    if (totalItems > 0) {
+        cartNumberEl.innerHTML = totalItems;
+    }
 }
 
 // Render Cart item
@@ -180,5 +193,3 @@ window.changeNumber = (action, id) => {
 
     updateCart();
 };
-
-function cartNumberDisplay() {}

@@ -19,3 +19,61 @@ section {
     position: relative;
 }
 
+.cart-number-counter {
+    position: absolute;
+    bottom: #{toRem(-10)};
+    right: #{toRem(-10)};
+    background: rgb(224, 0, 0);
+    width: #{toRem(22)};
+    border-radius: 50%;
+    height: #{toRem(22)};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    @include font-size(12);
+}
+
+#alert {
+    background: rgba($primary, 0.8);
+    @include padding(20, 20, 20, 20);
+    @include width(420);
+    position: fixed;
+    right: #{toRem(20)};
+    bottom: #{toRem(20)};
+    border-radius: 4px;
+    border-left: #{toRem(10)} solid rgba($primary, 0.8);
+    // display: none;
+
+    transform: translateX(120%);
+    transition: all 0.3s ease;
+
+    p {
+        font-weight: 700;
+        color: $white;
+        @include font-size(20);
+    }
+
+    &.show {
+        display: block;
+        animation: show_slide 0.3s ease forwards;
+        transition: all 0.3s ease;
+    }
+}
+
+@keyframes show_slide {
+    0% {
+        transform: translateX(0%);
+    }
+    40% {
+        transform: translateX(-10%);
+    }
+
+    80% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-10px);
+    }
+}

@@ -18,6 +18,7 @@ nav {
             display: flex;
             justify-content: space-around;
             li {
+                position: relative;
                 @include margin(0, 0, 0, 60);
                 a {
                     @include font-size(18);
@@ -146,19 +147,65 @@ nav {
                         }
                         .price-item {
                             display: flex;
+                            align-items: center;
+                            justify-content: space-between;
                             h3 {
                                 @include font-size(24);
                                 font-weight: 800;
                                 color: $primary;
+                                @include margin(0, 20, 0, 0);
                             }
                             .item-changer {
                                 display: flex;
+                                align-items: center;
+
+                                button {
+                                    background-color: rgb(94, 94, 94);
+                                    padding: 0.1rem 0.5rem;
+                                    @include margin(0, 10, 0, 10);
+                                    border-radius: 4px;
+                                    color: $white;
+                                }
+
+                                p {
+                                    background-color: $white;
+                                    padding: 0.1rem 0.5rem;
+                                    font-weight: 600;
+                                }
                             }
                         }
                         .remove-item {
                             @include font-size(13);
-                            color: #656565;
+                            background-color: #e00000;
+                            color: $white;
+                            display: inline;
+                            @include padding(5, 10, 5, 10);
+                            border-radius: 4px;
+                            cursor: pointer;
                         }
+                    }
+                }
+            }
+
+            .cart-action-buttons {
+                @include margin(40, 60, 40, 60);
+                display: flex;
+                justify-content: space-between;
+
+                button {
+                    @include font-size(24);
+                    background-color: $primary;
+                    color: #ffffff;
+                    display: inline;
+                    @include padding(10, 20, 10, 20);
+                    border-radius: 4px;
+                    cursor: pointer;
+                    font-weight: 600;
+
+                    &.secondary {
+                        background-color: $white;
+                        border: 1px solid $primary;
+                        color: $primary;
                     }
                 }
             }

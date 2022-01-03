@@ -24,7 +24,7 @@
                                 alt=""
                                 class="cart-icon"
                             />
-                            <span class="cart-number-counter">1</span>
+                            <span class="cart-number-counter"></span>
                         </li>
                     </ul>
                     <div class="ham-burger">
@@ -40,6 +40,10 @@
                     <div class="cart-container">
                         <h1 class="cart-heading">My Cart</h1>
                         <div class="cart-list-item"></div>
+                        <div class="cart-action-buttons">
+                            <button class="secondary">Continue Shopping</button>
+                            <button>Checkout</button>
+                        </div>
                     </div>
 
                     <div class="cart-blur-bg"></div>
@@ -134,6 +138,12 @@
                 <div class="book-container"></div>
             </div>
         </section>
+
+        <div id="alert" class="">
+            <p class="alert-msg">Item added to Cart</p>
+            <div class="close-btn"></div>
+        </div>
+
         <div class="subtotal"></div>
     </body>
     <script type="module" src="./js/main.js"></script>

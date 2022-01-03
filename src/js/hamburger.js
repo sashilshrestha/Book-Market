@@ -8,6 +8,7 @@ const navSlide = () => {
     const cardContainer = document.querySelector('.cart-container');
     const cardBlur = document.querySelector('.cart-blur-bg');
     const cartSmallIcon = document.querySelector('.ham-burger .cart-icon');
+    const continueBtn = document.querySelector('.secondary');
 
     burger.addEventListener('click', () => {
         nav.classList.toggle('nav-active');
@@ -51,6 +52,10 @@ const navSlide = () => {
     });
 
     cardBlur.addEventListener('click', () => {
+        cardContainer.classList.remove('cart-open');
+        cardBlur.classList.remove('open');
+    });
+    continueBtn.addEventListener('click', () => {
         cardContainer.classList.remove('cart-open');
         cardBlur.classList.remove('open');
     });

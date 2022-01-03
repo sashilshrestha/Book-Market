@@ -162,14 +162,12 @@
             }
 
             .genre-switch {
-                #genre {
-                    @include font-size(24);
-                    background-color: $white;
+                #genreBtn {
+                    @include font-size(18);
+
                     border: 1px solid black;
                     border-radius: #{toRem(4)};
                     @include padding(4, 0, 4, 2);
-                    border-color: $primary;
-                    color: $primary;
 
                     &:focus {
                         outline: none;
