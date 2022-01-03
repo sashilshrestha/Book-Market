@@ -198,6 +198,24 @@ nav {
     }
 }
 
+#navigation {
+    &.header-sticky {
+        position: fixed;
+        width: 100%;
+        z-index: 10;
+
+        background: #ffffff;
+
+        background: linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.8) 0,
+            #ffffff 100%
+        );
+        -webkit-box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.15);
+    }
+}
+
 @media screen and (max-width: 768px) {
     body {
         overflow-x: hidden;

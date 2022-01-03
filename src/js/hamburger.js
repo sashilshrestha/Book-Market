@@ -44,7 +44,7 @@ const navSlide = () => {
         cardContainer.classList.toggle('cart-open');
         cardBlur.classList.add('open');
     });
-    
+
     cartSmallIcon.addEventListener('click', () => {
         cardContainer.classList.toggle('cart-open');
         cardBlur.classList.add('open');
@@ -57,3 +57,27 @@ const navSlide = () => {
 };
 
 navSlide();
+
+//use window.scrollY
+let scrollpos = window.scrollY;
+let header = document.getElementById('navigation');
+
+function add_class_on_scroll() {
+    header.classList.add('header-sticky');
+}
+
+function remove_class_on_scroll() {
+    header.classList.remove('header-sticky');
+}
+
+window.addEventListener('scroll', function () {
+    //Here you forgot to update the value
+    scrollpos = window.scrollY;
+
+    if (scrollpos > 10) {
+        add_class_on_scroll();
+    } else {
+        remove_class_on_scroll();
+    }
+    console.log(scrollpos);
+});

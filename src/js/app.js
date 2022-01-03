@@ -1,6 +1,7 @@
 const searchResultDiv = document.querySelector('.book-container');
 const cartitemsEl = document.querySelector('.cart-list-item');
 const subtotalEl = document.querySelector('.subtotal');
+const cartNumberEl = document.querySelector('.cart-number-counter');
 
 const baseURL = `https://book-set-task.herokuapp.com/api/list_books`;
 const response = await fetch(baseURL);
@@ -106,6 +107,7 @@ function renderSubtotal() {
         totalItems += item.numberOfUnits;
     });
     subtotalEl.innerHTML = `Subtotal ${totalItems} items : Rs. ${totalPrice}`;
+    cartNumberEl.innerHTML = totalItems;
 }
 
 // Render Cart item
@@ -134,12 +136,18 @@ function renderCartItems() {
                 <div class="price-item">
                     <h3>Rs. ${nepaliPrice * item.numberOfUnits}</h3>
                     <div class="item-changer">
-                        <button onclick="changeNumber('minus',${item.id})">-</button>
+                        <button onclick="changeNumber('minus',${
+                            item.id
+                        })">-</button>
                         <p>${item.numberOfUnits}</p>
-                        <button onclick="changeNumber('plus',${item.id})">+</button>
+                        <button onclick="changeNumber('plus',${
+                            item.id
+                        })">+</button>
                     </div>
                 </div>
-                <div class="remove-item" onclick="removeItemFromCart(${item.id})">Remove Item</div>
+                <div class="remove-item" onclick="removeItemFromCart(${
+                    item.id
+                })">Remove Item</div>
             </div>
         </div>                        
         `;
@@ -172,3 +180,5 @@ window.changeNumber = (action, id) => {
 
     updateCart();
 };
+
+function cartNumberDisplay() {}
